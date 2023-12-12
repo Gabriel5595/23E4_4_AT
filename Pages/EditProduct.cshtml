@@ -1,0 +1,92 @@
+﻿@page
+@model PokeStore.Pages.EditProductModel
+@{
+}
+
+<div class="row pt-5">
+
+    <div class="col-md-4">
+
+        <form method="post">
+
+            <h4>Alteração de Produto</h4>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="Product.ProductId" />
+
+            <div class="form-group">
+
+                <label asp-for="Product.ProductName" class="control-label"></label>
+                <input asp-for="Product.ProductName" class="form-control" />
+                <span asp-validation-for="Product.ProductName" class="text-danger"></span>
+
+            </div>
+
+            <div class="form-group">
+
+                <label asp-for="Product.ProductDescription" class="control-label"></label>
+                <input asp-for="Product.ProductDescription" class="form-control" />
+                <span asp-validation-for="Product.ProductDescription" class="text-danger"></span>
+
+            </div>
+
+            <div class="form-group">
+
+                <label asp-for="Product.ProductImage" class="control-label"></label>
+                <input asp-for="Product.ProductImage" class="form-control" />
+                <span asp-validation-for="Product.ProductImage" class="text-danger"></span>
+
+            </div>
+
+            <div class="form-group">
+
+                <label asp-for="Product.ProductPrice" class="control-label"></label>
+                <input asp-for="Product.ProductPrice" class="form-control" />
+                <span asp-validation-for="Product.ProductPrice" class="text-danger"></span>
+
+            </div>
+
+            <div class="form-group mt-3 mb-3">
+
+                <input class="form-check-input" asp-for="Product.IsAvailable" />
+                <label asp-for="Product.IsAvailable"></label>
+
+            </div>
+
+            <div class="form-group">
+
+                <label asp-for="Product.RegistrationDate" class="control-label"></label>
+                <input asp-for="Product.RegistrationDate" class="form-control" />
+                <span asp-validation-for="Product.RegistrationDate" class="text-danger"></span>
+
+            </div>
+
+            <div class="form-group mt-3 mb-3">
+                <label asp-for="Product.BrandId" class="control-label"></label>
+                <select class="form-select" asp-for="Product.BrandId" asp-items="Model.BrandOptionItems">
+                    <option value="">Selecione uma opção</option>
+                </select>
+                <span asp-validation-for="Product.BrandId" class="text-danger">
+                </span>
+            </div>
+
+            <div class="form-group mt-4">
+
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+                <input type="submit" value="Excluir" class="btn btn-primary" asp-page-handler="Delete" />
+
+            </div>
+
+        </form>
+
+    </div>
+
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
